@@ -1,4 +1,6 @@
 vault:
+  ui:
+    enabled: true
   injector:
     resources:
       limits:
@@ -8,6 +10,9 @@ vault:
         cpu: 250m
         memory: 128Mi
   server:
+    ingress:
+      enabled: true
+      ingressClassName: nginx
     resources:
       limits:
         cpu: 500m
