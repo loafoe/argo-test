@@ -1,0 +1,14 @@
+apiVersion: v2
+name: rabbitmq
+description: Deploy RabbitMQ
+
+type: application
+
+version: 0.0.1
+
+appVersion: 11.0.4
+
+dependencies:
+  - name: rabbitmq
+    version: 11.0.4
+    repository: https://charts.bitnami.com/bitnami
