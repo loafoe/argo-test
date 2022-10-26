@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
-  project: default
+  project: {{ .Values.spec.project | default "default" }}
   source:
     path: charts/vault
     repoURL: {{ .Values.spec.source.repoURL }}
