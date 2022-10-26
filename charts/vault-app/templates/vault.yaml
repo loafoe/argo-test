@@ -3,9 +3,10 @@ kind: Application
 metadata:
   name: vault
   namespace: {{ .Values.spec.destination.namespace }}
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+
 spec:
+  syncPolicy:
+    allowEmpty: true
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
