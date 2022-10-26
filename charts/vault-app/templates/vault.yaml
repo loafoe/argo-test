@@ -10,7 +10,7 @@ spec:
       prune: true
       allowEmpty: true
   destination:
-    namespace: {{ .Values.spec.destination.namespace }}
+    namespace: vault
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.project | default "default" }}
   source:
