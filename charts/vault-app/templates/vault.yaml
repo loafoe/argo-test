@@ -33,6 +33,12 @@ spec:
           ingress:
             enabled: true
             ingressClassName: nginx
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-production
+              nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: 'true'
+              nginx.ingress.kubernetes.io/auth-tls-secret: default/ca-secret
+              nginx.ingress.kubernetes.io/auth-tls-verify-client: 'on'
+              nginx.ingress.kubernetes.io/auth-tls-verify-depth: '1'
             tls:
               - hosts:
                   - {{ .Values.spec.hostname }}
