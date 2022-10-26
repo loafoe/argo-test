@@ -1,4 +1,5 @@
 spec:
+  hostname: vault.local
   project: default
   destination:
     server: https://kubernetes.default.svc

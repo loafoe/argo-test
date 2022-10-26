@@ -33,6 +33,16 @@ spec:
           ingress:
             enabled: true
             ingressClassName: nginx
+            tls:
+              - hosts:
+                  - {{ .Values.spec.hostname }}
+                secretName: tls-vault-credential
+            rules:
+              - host: {{ .Values.spec.hostname }}
+                http:
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
           resources:
             limits:
               cpu: 500m
