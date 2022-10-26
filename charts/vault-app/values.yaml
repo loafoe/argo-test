@@ -2,7 +2,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: vault
+    namespace: argocd
   source:
     repoURL: https://github.com/loafoe/argo-test
     targetRevision: HEAD
