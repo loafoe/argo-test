@@ -6,7 +6,9 @@ metadata:
 
 spec:
   syncPolicy:
-    allowEmpty: true
+    automated:
+      prune: true
+      allowEmpty: true
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
