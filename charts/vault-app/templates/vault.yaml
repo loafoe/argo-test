@@ -43,12 +43,8 @@ spec:
               - hosts:
                   - {{ .Values.spec.hostname }}
                 secretName: tls-vault-credential
-            rules:
+            hosts:
               - host: {{ .Values.spec.hostname }}
-                http:
-                  paths:
-                    - path: /
-                      pathType: ImplementationSpecific
           resources:
             limits:
               cpu: 500m
