@@ -8,8 +8,9 @@ Deploy Vault
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| spec.destination.namespace | string | `"vault"` |  |
+| spec.destination.namespace | string | `"argocd"` |  |
 | spec.destination.server | string | `"https://kubernetes.default.svc"` |  |
+| spec.hostname | string | `"vault.local"` |  |
 | spec.project | string | `"default"` |  |
 | spec.source.repoURL | string | `"https://github.com/loafoe/argo-test"` |  |
 | spec.source.targetRevision | string | `"HEAD"` |  |

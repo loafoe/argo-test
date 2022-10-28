@@ -1,7 +1,7 @@
 apiVersion: database.aws.crossplane.io/v1beta1
 kind: RDSInstance
 metadata:
-  name: {{ printf "%s-%s" (include "aws-rds-instance.fullname" .) .Values.database.engine }}
+  name: {{ printf "%s-%s" .Release.Name .Values.database.engine }}
 spec:
   forProvider:
     dbInstanceClass: {{ .Values.database.instanceClass }}
@@ -19,4 +19,4 @@ spec:
       - {{ include "hsp-addons.config.vpc.securityGroups.database" . }}
   writeConnectionSecretToRef:
     namespace: crossplane-system
-    name: {{ printf "%s-credentials" (include "aws-rds-instance.fullname" .) }}
+    name: {{ printf "%s-%s-credentials" .Release.Name .Values.database.engine }}
