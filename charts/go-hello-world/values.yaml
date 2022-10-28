@@ -21,6 +21,7 @@ database:
   engineVersion: "14.4"
   allocatedStorage: 20
   instanceClass: "db.m5.large"
+  dbName: postgres
 
 serviceAccount:
   # Specifies whether a service account should be created
