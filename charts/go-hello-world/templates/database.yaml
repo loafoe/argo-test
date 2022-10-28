@@ -1,0 +1,22 @@
+apiVersion: database.aws.crossplane.io/v1beta1
+kind: RDSInstance
+metadata:
+  name: {{ printf "%s-%s" (include "aws-rds-instance.fullname" .) .Values.database.engine }}
+spec:
+  forProvider:
+    dbInstanceClass: {{ .Values.database.instanceClass }}
+    masterUsername: masteruser
+    allocatedStorage: {{ .Values.database.allocatedStorage }}
+    dbName: {{ .Values.database.dbName }}
+    engine: {{ .Values.database.engine }}
+    engineVersion: {{ .Values.database.engineVersion }}
+    region: {{ include "hsp-addons.config.region" . }}
+    skipFinalSnapshotBeforeDeletion: true
+    publiclyAccessible: false
+    storageEncrypted: true
+    dbSubnetGroupName: {{ include "hsp-addons.config.vpc.subnetGroups.database" . }}
+    vpcSecurityGroupIds:
+      - {{ include "hsp-addons.config.vpc.securityGroups.database" . }}
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+    name: {{ printf "%s-credentials" (include "aws-rds-instance.fullname" .) }}

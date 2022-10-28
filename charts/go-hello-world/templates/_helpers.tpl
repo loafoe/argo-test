@@ -60,3 +60,28 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+HSP addons
+*/}}
+{{- define "hsp-addons.config.region" -}}
+{{- with lookup "v1" "ConfigMap" "hsp-addons" "hsp-addons" -}}
+{{- .data.region }}
+{{- end }}
+{{- end }}
+
+{{- define "hsp-addons.config.vpc.securityGroups.database" -}}
+{{- with lookup "v1" "ConfigMap" "hsp-addons" "hsp-addons" -}}
+{{- with .data.vpc | fromJson }}
+{{- .securityGroups.database.id -}}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- define "hsp-addons.config.vpc.subnetGroups.database" -}}
+{{- with lookup "v1" "ConfigMap" "hsp-addons" "hsp-addons" -}}
+{{- with .data.vpc | fromJson }}
+{{- .subnetGroups.database.name -}}
+{{- end }}
+{{- end }}
+{{- end }}
