@@ -16,6 +16,12 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+database:
+  engine: postgres
+  engineVersion: "14.4"
+  allocatedStorage: 20
+  instanceClass: "db.m5.large"
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

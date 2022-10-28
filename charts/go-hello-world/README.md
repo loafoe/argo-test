@@ -17,6 +17,10 @@ Example application
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | color | string | `"colorless"` |  |
+| database.allocatedStorage | int | `20` |  |
+| database.engine | string | `"postgres"` |  |
+| database.engineVersion | string | `"14.4"` |  |
+| database.instanceClass | string | `"db.m5.large"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"loafoe/go-hello-world"` |  |
