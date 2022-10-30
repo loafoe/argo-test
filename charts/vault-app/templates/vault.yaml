@@ -19,8 +19,8 @@ spec:
     targetRevision: 0.22.0
     helm:
       fileParameters:
-        - name: clusterFqdn
-          path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.cluster.clusterFQDN}
+        - name: spec.hostname
+          path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.clusterFQDN}
       values: |-
         ui:
           enabled: true
