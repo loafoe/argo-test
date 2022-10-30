@@ -9,7 +9,7 @@ spec:
     allocatedStorage: {{ .Values.database.allocatedStorage }}
     dbName: {{ .Values.database.dbName }}
     engine: {{ .Values.database.engine }}
-    engineVersion: {{ .Values.database.engineVersion }}
+    engineVersion: {{ .Values.database.engineVersion | quote }}
     region: {{ include "hsp-addons.config.region" . }}
     skipFinalSnapshotBeforeDeletion: true
     publiclyAccessible: false
