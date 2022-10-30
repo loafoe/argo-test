@@ -18,10 +18,10 @@ spec:
     repoURL: https://helm.releases.hashicorp.com
     targetRevision: 0.22.0
     helm:
+      fileParameters:
+        - name: clusterFqdn
+          path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.cluster.clusterFQDN}
       values: |-
-        fileParameters:
-          - name: clusterFqdn
-            path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.cluster.clusterFQDN}
         ui:
           enabled: true
         injector:
