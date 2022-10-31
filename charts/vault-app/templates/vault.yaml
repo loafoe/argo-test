@@ -44,10 +44,10 @@ spec:
               nginx.ingress.kubernetes.io/auth-tls-verify-depth: '1'
             tls:
               - hosts:
-                  - {{ .Values.spec.hostname }}
+                  - argocd.{% raw %}{{ .Values.spec.hostname }}{% endraw %}
                 secretName: tls-vault-credential
             hosts:
-              - host: {{ .Values.spec.hostname }}
+              - host: argocd.{% raw %}{{ .Values.spec.hostname }}{% endraw %}
           resources:
             limits:
               cpu: 500m
