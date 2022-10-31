@@ -19,7 +19,9 @@ spec:
     targetRevision: 0.22.0
     helm:
       fileParameters:
-        - name: spec.hostname
+        - name: server.ingress.hosts[0].host
+          path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.clusterFQDN}
+        - name: server.ingress.tls[0].hosts[0]
           path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.clusterFQDN}
       values: |-
         ui:
@@ -37,17 +39,17 @@ spec:
             enabled: true
             ingressClassName: nginx
             annotations:
-              cert-manager.io/cluster-issuer: letsencrypt-production
+              cert-manager.io/cluster-issuer: letsencrypt-staging
               nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: 'true'
               nginx.ingress.kubernetes.io/auth-tls-secret: default/ca-secret
               nginx.ingress.kubernetes.io/auth-tls-verify-client: 'on'
               nginx.ingress.kubernetes.io/auth-tls-verify-depth: '1'
             tls:
               - hosts:
-                  - argocd.{% raw %}{{ .Values.spec.hostname }}{% endraw %}
+                  - placeholder
                 secretName: tls-vault-credential
             hosts:
-              - host: argocd.{% raw %}{{ .Values.spec.hostname }}{% endraw %}
+              - host: placeholder
           resources:
             limits:
               cpu: 500m
