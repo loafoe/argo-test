@@ -4,6 +4,6 @@ description: Deploy Vault
 
 type: application
 
-version: 0.0.9
+version: 0.0.10
 
 appVersion: 1.11.3
