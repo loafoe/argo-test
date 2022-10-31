@@ -23,6 +23,8 @@ spec:
           path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.clusterFQDN}
         - name: server.ingress.tls[0].hosts[0]
           path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.clusterFQDN}
+        - name: fqdn
+          path: kubectl://?default/configmap/cluster-metadata/jsonpath={.data.clusterFQDN}
       values: |-
         ui:
           enabled: true
@@ -46,10 +48,10 @@ spec:
               nginx.ingress.kubernetes.io/auth-tls-verify-depth: '1'
             tls:
               - hosts:
-                  - placeholder
+                  - {{ include "vault.fqdn" . }}
                 secretName: tls-vault-credential
             hosts:
-              - host: placeholder
+              - host: {{ include "vault.fqdn" . }}
           resources:
             limits:
               cpu: 500m
